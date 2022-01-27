@@ -10,11 +10,27 @@
     <link rel="alternate" type="application/rss+xml" title="訂閱《The R Club》» 留言的資訊提供" href="https://wordpress-699164-2380186.cloudwaysapps.com/index.php/comments/feed/">
     <link rel="icon" href="./Ricon.ico" type="image/x-icon" />
     <script>
+		
+
+		
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {  
             web3 = new Web3("wss://mainnet.infura.io/ws/v3/b728a5b97fb74e7fb413a930f3b69e06");
         }
+
+		async function test(){
+			let network = await web3.eth.net.getNetworkType();
+			console.log(network);
+
+			if(network === "rinkeby"){
+				
+			}else{
+				alert("Please change the network to Rinkeby")
+			}
+
+		}
+		test();
     </script>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/wordpress-699164-2380186.cloudwaysapps.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9"}};
