@@ -400,7 +400,7 @@ var elementorAdminBarConfig = {"elementor_edit_page":{"id":"elementor_edit_page"
         RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.05', 'ether'), gas: 350000 })
         .then(function(error, event){ 
     
-            console.log("Mint Success"); 
+			window.location.reload();
         });
     }
 
