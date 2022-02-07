@@ -190,9 +190,9 @@ flexibility(document.documentElement);
 				<div class="elementor-element elementor-element-5555f3b elementor-widget-mobile__width-inherit elementor-align-left elementor-widget elementor-widget-button" data-id="5555f3b" data-element_type="widget" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-button-wrapper">
-			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" id="mintblock" role="button">
 						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text" onclick="MintNFT()">     Mint </span>
+						<span class="elementor-button-text" id="Sold_out" onclick="MintNFT()">     Mint </span>
 		</span>
 					</a>
 		</div>
@@ -371,18 +371,25 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
     }
 
     async function MintNFT(){
-        RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.05', 'ether'), gas: 350000 })
-        .then(function(error, event){ 
-    
-			window.location.reload();
-        });
+
+		let nums = await RClub.methods.setBuyValue().call();
+
+		if(nums >0){
+			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.05', 'ether'), gas: 350000 })
+			.then(function(error, event){ 
+		
+				window.location.reload();
+			});
+		}else{
+			return;
+		}
     }
 
     async function SalesVolume(){
         let SalesVolumes = await RClub.methods.setBuyValue().call();
 		
         $("#Volumes").text(SalesVolumes);
-		
+		// SalesVolumes = 0;
 		if(SalesVolumes == 0){
 			$("#Sold_out").text("Sold out");
 			$("#mintblock").css("background-color","#606060");
