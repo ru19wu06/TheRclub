@@ -27,18 +27,7 @@
 
     
 
-    async function test(){
-        let network = await web3.eth.net.getNetworkType();
-        console.log(network);
 
-        if(network === "rinkeby"){
-            
-        }else{
-            alert("Please change the network to Rinkeby")
-        }
-
-    }
-    test();
 </script>
 <script>
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/wordpress-699164-2380186.cloudwaysapps.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9"}};
@@ -178,7 +167,7 @@ flexibility(document.documentElement);
 				<div class="elementor-widget-container">
 			
 		        <div class="eael-dual-header">
-				<h2 class="title"><span class="lead solid-color">可購買數量：</span> <span id="Volumes">30</span></h2>
+				<h2 class="title"><span class="lead solid-color">可購買數量：</span> <span id="Volumes"></span></h2>
 				<span class="subtext"></span>
 				</div>
 	
@@ -341,7 +330,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
         window.location.reload();
     }
 
-    async function RenewAddress(){
+    window.addEventListener('DOMContentLoaded', async () => {
 
         coinbase = await web3.eth.getCoinbase();
         console.log(coinbase);
@@ -354,9 +343,9 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
         $("#login_address").text(add);
         
         setNFT_ABI();
-    }
+    })
 
-    RenewAddress();
+    // RenewAddress();
     
     let R_Contract;
     let RClub;
