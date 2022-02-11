@@ -364,7 +364,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 		let nums = await RClub.methods.setBuyValue().call();
 
 		if(nums >0){
-			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.5', 'ether'), gas: 350000 })
+			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
 			.then(function(error, event){ 
 		
 				window.location.reload();
