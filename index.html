@@ -176,7 +176,7 @@ flexibility(document.documentElement);
 				<div class="elementor-widget-container">
 					<div class="elementor-button-wrapper">
 			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" id="mintblock" role="button">
-						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-content-wrapper" onclick="MintNFT()">
 						<span class="elementor-button-text" id="Sold_out" onclick="MintNFT()">Mint </span>
 		</span>
 					</a>
@@ -244,7 +244,7 @@ flexibility(document.documentElement);
 				<div class="elementor-widget-container">
 					<div class="elementor-button-wrapper">
 			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" role="button">
-						<span class="elementor-button-content-wrapper">
+						<span onclick="MintNFT()" class="elementor-button-content-wrapper">
 						<span class="elementor-button-text"  id="Sold_out2" onclick="MintNFT()">     Mint </span>
 		</span>
 					</a>
@@ -347,7 +347,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 	async function setCollent(){
 		let account = await ethereum.request({ method: 'eth_requestAccounts' });
        
-	   coinbase = account[0];
+	   	coinbase = account[0];
        
         let ETHbalance = await web3.eth.getBalance(coinbase);
         ETHbalance = web3.utils.fromWei(ETHbalance, 'ether');
