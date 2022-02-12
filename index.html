@@ -330,9 +330,9 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 
     window.addEventListener('DOMContentLoaded', async () => {
 
-        coinbase = await web3.eth.getCoinbase();
-        console.log(coinbase);
-
+        let account = await ethereum.request({ method: 'eth_requestAccounts' });
+       
+        coinbase = account[0];
         let ETHbalance = await web3.eth.getBalance(coinbase);
         ETHbalance = web3.utils.fromWei(ETHbalance, 'ether');
 
@@ -345,7 +345,9 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 
 
 	async function setCollent(){
-		coinbase = await web3.eth.getCoinbase();
+		let account = await ethereum.request({ method: 'eth_requestAccounts' });
+       
+	   coinbase = account[0];
        
         let ETHbalance = await web3.eth.getBalance(coinbase);
         ETHbalance = web3.utils.fromWei(ETHbalance, 'ether');
