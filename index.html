@@ -249,16 +249,16 @@ flexibility(document.documentElement);
 					<div class="elementor-button-wrapper">
 			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text"  id="Sold_out" onclick="MintNFT()">     Mint </span>
+						<span class="elementor-button-text"  id="Sold_out2" onclick="MintNFT()">     Mint </span>
 		</span>
 					</a>
 		</div>
 				</div>
 				</div>
 				<div class="elementor-element elementor-element-8322313 elementor-widget-mobile__width-inherit elementor-align-center elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="8322313" data-element_type="widget" data-widget_type="button.default">
-				<div onclick="login_In_button()" class="elementor-widget-container">
+				<div  class="elementor-widget-container">
 					<div  class="elementor-button-wrapper">
-			<a href="#" onclick="login_In_button()"  class="elementor-button-link elementor-button elementor-size-lg" role="button">
+			<a href="#"  class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						<span onclick="login_In_button()" class="elementor-button-content-wrapper"></span>
 						<span onclick="login_In_button()" id="login_address" class="elementor-button-text"  >
 							<span id="tes">Connect Wallet</span>
@@ -347,6 +347,22 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
         setNFT_ABI();
     })
 
+	$(document).ready(function(){
+		$('#tes').on('click touchstart', function() {
+
+			setCollent();
+
+		});
+	});
+
+	$(document).ready(function(){
+		$('#Sold out').on('click touchstart', function() {
+
+			MintNFT();
+
+		});
+	});
+
 	async function setCollent(){
 		coinbase = await web3.eth.getCoinbase();
        
@@ -389,6 +405,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 			return;
 		}
     }
+	
 
     async function SalesVolume(){
         let SalesVolumes = await RClub.methods.setBuyValue().call();
@@ -398,6 +415,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 		// SalesVolumes = 0;
 		if(SalesVolumes == 0){
 			$("#Sold_out").text("Sold out");
+			$("Sold_out2").text("Sold out");
 			$("#mintblock").css("background-color","#606060");
 		}
 
