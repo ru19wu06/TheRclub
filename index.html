@@ -329,7 +329,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 
     async function login_In_button(){
         await ethereum.request({ method: 'eth_requestAccounts' });
-        //window.location.reload();
+        window.location.reload();
     }
 
     window.addEventListener('DOMContentLoaded', async () => {
@@ -348,7 +348,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
     })
 
 	$(document).ready(function(){
-		$('#tes').on('click touchstart', function() {
+		$('#login_address').on('click touchstart', function() {
 
 			setCollent();
 
