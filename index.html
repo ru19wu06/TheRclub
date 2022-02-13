@@ -243,7 +243,7 @@ flexibility(document.documentElement);
 				<div class="elementor-element elementor-element-999ea77 elementor-widget-mobile__width-inherit elementor-align-center elementor-mobile-align-left elementor-widget elementor-widget-button" data-id="999ea77" data-element_type="widget" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-button-wrapper">
-			<a href="#" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+			<a href="#" id="specialBlock" class="elementor-button-link elementor-button elementor-size-lg" role="button">
 						<span onclick="MintNFT()" class="elementor-button-content-wrapper">
 						<span class="elementor-button-text"  id="Sold_out2">     Mint </span>
 		</span>
@@ -367,7 +367,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 
     async function setNFT_ABI(){
 
-        R_Contract= "0xc4E2C63A6B27A98170e3FCfD43ae954D33F86b51";
+        R_Contract= "0xE6C94EA9996B6FEb396078Ece2fa452543fFedD1";
     
         RClub = new web3.eth.Contract(R_ABI,R_Contract);
         SalesVolume();
@@ -395,11 +395,12 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 		
         $("#Volumes").text(SalesVolumes);
 		$("#Volumes2").text(SalesVolumes);
-		// SalesVolumes = 0;
+		//SalesVolumes = 0;
 		if(SalesVolumes == 0){
 			$("#Sold_out").text("Sold out");
 			$("Sold_out2").text("Sold out");
 			$("#mintblock").css("background-color","#606060");
+			$("#specialBlock").css("background-color","#606060");
 		}
 
     }
