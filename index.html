@@ -374,20 +374,20 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 		
     }
 
-    async function MintNFT(){
+    // async function MintNFT(){
 
-		let nums = await RClub.methods.setBuyValue().call();
+	// 	let nums = await RClub.methods.setBuyValue().call();
 
-		if(nums >0){
-			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
-			.then(function(error, event){ 
+	// 	if(nums >0){
+	// 		RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
+	// 		.then(function(error, event){ 
 		
-				window.location.reload();
-			});
-		}else{
-			return;
-		}
-    }
+	// 			window.location.reload();
+	// 		});
+	// 	}else{
+	// 		return;
+	// 	}
+    // }
 	
 
     async function SalesVolume(){
