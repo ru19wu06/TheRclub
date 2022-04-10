@@ -377,7 +377,7 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
     async function MintNFT(){
 
 		let nums = await RClub.methods.setBuyValue().call();
-
+		
 		if(nums >0){
 			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
 			.then(function(error, event){ 
@@ -395,10 +395,10 @@ var jetElements = {"ajaxUrl":"https:\/\/wordpress-699164-2380186.cloudwaysapps.c
 		
         $("#Volumes").text(SalesVolumes);
 		$("#Volumes2").text(SalesVolumes);
-		//SalesVolumes = 0;
+		
 		if(SalesVolumes == 0){
 			$("#Sold_out").text("Sold out");
-			$("Sold_out2").text("Sold out");
+			$("#Sold_out2").text("Sold out");
 			$("#mintblock").css("background-color","#606060");
 			$("#specialBlock").css("background-color","#606060");
 		}
