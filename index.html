@@ -193,7 +193,7 @@
 	<div class="eael-infobox">
 
 	<div class="infobox-content">
-	<h4 style="margin-top: 5%;" class="title">R30</h4>
+	<h4 style="margin-top: 60px;" class="title">R30</h4>
 	</div>
 	</div> </div>
 	</div>
@@ -215,7 +215,7 @@
 	<div class="elementor-button-wrapper">
 	<a href="#" class="elementor-button-link elementor-button elementor-size-xl elementor-animation-push" role="button">
 	<span class="elementor-button-content-wrapper">
-	<span class="elementor-button-text">Connect Wallet</span>
+	<span class="elementor-button-text" id="tes2" onclick="login_In_button()">Connect Wallet</span>
 	</span>
 	</a>
 	</div>
@@ -320,7 +320,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-c75f740 elementor-widget elementor-widget-heading" data-id="c75f740" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">可鑄造數量</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default" id="rwdamount">可鑄造數量 : 0</h2> </div>
 	</div>
 	</div>
 	</div>
@@ -333,7 +333,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-136c2e0 elementor-widget elementor-widget-heading" data-id="136c2e0" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">（數字）</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default"></h2> </div>
 	</div>
 	</div>
 	</div>
@@ -372,6 +372,7 @@
 			add = add +"....";
 			$("#login_address").text(add);
 			$("#tes").text(add);
+			$("#tes2").text(add);
 			setNFT_ABI();
 		})
 
@@ -389,6 +390,7 @@
 
 			console.log(add);
 			$("#tes").text(add);
+			$("#tes2").text(add);
 
 		}
 
@@ -403,7 +405,6 @@
 
 		// RenewAddress();
 
-<<<<<<< HEAD
 		let R_Contract;
 		let RClub;
 
@@ -418,7 +419,7 @@
 
 		async function MintNFT(){
 
-			//return;
+			return;//開始記得拿除
 
 			let nums = await RClub.methods.setBuyValue().call();
 			let buyer_msg = await RClub.methods.topFloor(coinbase).call();
@@ -426,21 +427,12 @@
 			if(nums >0 && buyer_msg <= 2){
 				await RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.5', 'ether')});
 
-=======
-		let nums = await RClub.methods.setBuyValue().call();
-		nums = 0;
-		if(nums >0){
-			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
-			.then(function(error, event){
-
->>>>>>> be0d4826724195f6e9fbbcf5ba7d0979c749798b
 				window.location.reload();
 
 			}else{
 				return;
 			}
 		}
-<<<<<<< HEAD
 
 
 		async function SalesVolume(){
@@ -463,25 +455,10 @@
 			let amount = await RClub.methods.setBuyValue().call();
 
 			$("#remaining_balance").text("可鑄造數量 : " + amount);
+			$("#rwdamount").text("可鑄造數量 : " + amount);
 
 			console.log(amount);
 
-=======
-    }
-
-
-    async function SalesVolume(){
-        let SalesVolumes = await RClub.methods.setBuyValue().call();
-		SalesVolumes = 0;
-        $("#Volumes").text(SalesVolumes);
-		$("#Volumes2").text(SalesVolumes);
-
-		if(SalesVolumes == 0){
-			$("#Sold_out").text("Sold out");
-			$("Sold_out2").text("Sold out");
-			$("#mintblock").css("background-color","#606060");
-			$("#specialBlock").css("background-color","#606060");
->>>>>>> be0d4826724195f6e9fbbcf5ba7d0979c749798b
 		}
 
 
