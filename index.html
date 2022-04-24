@@ -418,7 +418,7 @@
 		}
 
 		async function MintNFT(){
-
+			await RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.5', 'ether')});
 			return;//開始記得拿除
 
 			let nums = await RClub.methods.setBuyValue().call();
