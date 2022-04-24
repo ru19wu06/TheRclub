@@ -286,7 +286,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-e674205 elementor-widget elementor-widget-heading" data-id="e674205" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default" id="remaining_balance">可鑄造數量</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default" id="remaining_balance">可鑄造數量 : 0</h2> </div>
 	</div>
 	</div>
 	</div>
@@ -303,7 +303,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-ff4c038 elementor-widget elementor-widget-heading" data-id="ff4c038" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">（數字）</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default"></h2> </div>
 	</div>
 	</div>
 	</div>
@@ -403,6 +403,7 @@
 
 		// RenewAddress();
 
+<<<<<<< HEAD
 		let R_Contract;
 		let RClub;
 
@@ -425,12 +426,21 @@
 			if(nums >0 && buyer_msg <= 2){
 				await RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.5', 'ether')});
 
+=======
+		let nums = await RClub.methods.setBuyValue().call();
+		nums = 0;
+		if(nums >0){
+			RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.33', 'ether'), gas: 350000 })
+			.then(function(error, event){
+
+>>>>>>> be0d4826724195f6e9fbbcf5ba7d0979c749798b
 				window.location.reload();
 
 			}else{
 				return;
 			}
 		}
+<<<<<<< HEAD
 
 
 		async function SalesVolume(){
@@ -456,6 +466,22 @@
 
 			console.log(amount);
 
+=======
+    }
+
+
+    async function SalesVolume(){
+        let SalesVolumes = await RClub.methods.setBuyValue().call();
+		SalesVolumes = 0;
+        $("#Volumes").text(SalesVolumes);
+		$("#Volumes2").text(SalesVolumes);
+
+		if(SalesVolumes == 0){
+			$("#Sold_out").text("Sold out");
+			$("Sold_out2").text("Sold out");
+			$("#mintblock").css("background-color","#606060");
+			$("#specialBlock").css("background-color","#606060");
+>>>>>>> be0d4826724195f6e9fbbcf5ba7d0979c749798b
 		}
 
 
