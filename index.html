@@ -226,7 +226,7 @@
 	<div class="elementor-button-wrapper">
 	<a href="#" class="elementor-button-link elementor-button elementor-size-xl elementor-animation-push" role="button">
 	<span class="elementor-button-content-wrapper">
-	<span class="elementor-button-text" onclick="MintNFT()">Not start</span>
+	<span class="elementor-button-text" id="mintf" onclick="MintNFT()">Not start</span>
 	</span>
 	</a>
 	</div>
@@ -369,7 +369,7 @@
 			ETHbalance = web3.utils.fromWei(ETHbalance, 'ether');
 
 			let add = coinbase.substring(0,12)
-			add = add +"....";
+
 			$("#login_address").text(add);
 			$("#tes").text(add);
 			$("#tes2").text(add);
@@ -386,7 +386,7 @@
 			ETHbalance = web3.utils.fromWei(ETHbalance, 'ether');
 
 			let add = coinbase.substring(0,12)
-			add = add +"....";
+
 
 			console.log(add);
 			$("#tes").text(add);
@@ -396,9 +396,12 @@
 
 		async function checkbalance(){
 
-			let bal = await RClub.methods.
+			let bal = await RClub.methods.setBuyValue().call();
+			$("#remaining_balance").text("可鑄造數量 : "+bal);
 
-			$("#remaining_balance").text();
+			if(bal > 0 ){
+				$("#mintf").text("Mint");
+			}
 		}
 
 
@@ -415,11 +418,11 @@
 			RClub = new web3.eth.Contract(R_ABI,R_Contract);
 			SalesVolume();
 			checkSaleAmount();
+			checkbalance();
 		}
 
 		async function MintNFT(){
 
-			return;//開始記得拿除
 
 			let nums = await RClub.methods.setBuyValue().call();
 			let buyer_msg = await RClub.methods.topFloor(coinbase).call();
@@ -430,6 +433,7 @@
 				window.location.reload();
 
 			}else{
+				console.log("input wrong");
 				return;
 			}
 		}
