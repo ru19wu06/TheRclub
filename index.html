@@ -397,8 +397,9 @@
 		async function checkbalance(){
 
 			let bal = await RClub.methods.setBuyValue().call();
+		
 			$("#remaining_balance").text("可鑄造數量 : "+bal);
-
+	
 			if(bal > 0 ){
 				$("#mintf").text("Mint");
 			}
