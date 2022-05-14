@@ -252,7 +252,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-404b03d elementor-widget elementor-widget-heading" data-id="404b03d" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">0.5 ETH</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default" id="rightPrice2">0.5 ETH</h2> </div>
 	</div>
 	</div>
 	</div>
@@ -265,7 +265,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-38d9de2 elementor-widget elementor-widget-heading" data-id="38d9de2" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">Price</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default" >Price</h2> </div>
 	</div>
 	</div>
 	</div>
@@ -273,7 +273,7 @@
 	<div class="elementor-widget-wrap elementor-element-populated">
 	<div class="elementor-element elementor-element-f9c4b1e elementor-widget elementor-widget-heading" data-id="f9c4b1e" data-element_type="widget" data-widget_type="heading.default">
 	<div class="elementor-widget-container">
-	<h2 class="elementor-heading-title elementor-size-default">0.5 ETH</h2> </div>
+	<h2 class="elementor-heading-title elementor-size-default" id="rightPrice">0.5 ETH</h2> </div>
 	</div>
 	</div>
 	</div>
@@ -399,6 +399,14 @@
 			let bal = await RClub.methods.setBuyValue().call();
 			$("#remaining_balance").text("可鑄造數量 : "+bal);
 
+			let salePrice = await RClub.methods.SalePrice().call();
+
+			salePrice = web3.utils.fromWei(salePrice ,'ether');
+			console.log(salePrice + " ETH");
+
+			$("#rightPrice").text(salePrice + " ETH");
+			$("#rightPrice2").text(salePrice + " ETH");
+
 			if(bal > 0 ){
 				$("#mintf").text("Mint");
 			}
@@ -426,9 +434,11 @@
 
 			let nums = await RClub.methods.setBuyValue().call();
 			let buyer_msg = await RClub.methods.topFloor(coinbase).call();
+			let salePrice = await RClub.methods.SalePrice().call();
+			salePrice = web3.utils.fromWei(salePrice ,'ether');
 
 			if(nums >0 && buyer_msg <= 2){
-				await RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei('0.5', 'ether')});
+				await RClub.methods.mint().send({from: coinbase, value:web3.utils.toWei(salePrice, 'ether')});
 
 				window.location.reload();
 
