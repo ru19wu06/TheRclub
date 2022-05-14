@@ -397,6 +397,7 @@
 		async function checkbalance(){
 
 			let bal = await RClub.methods.setBuyValue().call();
+
 			$("#remaining_balance").text("可鑄造數量 : "+bal);
 
 			let salePrice = await RClub.methods.SalePrice().call();
